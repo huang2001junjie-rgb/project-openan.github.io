@@ -3,11 +3,7 @@
 # The last matching pattern takes precedence.
 # Reference: https://docs.github.com/articles/about-code-owners
 
-# Default owners for all content in this repository.
-# The maintainer team is automatically requested for review on every pull request.
-* @project-openan/website-maintainers
-
-# The governance files themselves are owned by the org admins
-# so that team membership and these files stay in sync.
-/CODEOWNERS @project-openan/admins
-/MAINTAINERS.md @project-openan/admins
+# The maintainers team owns all content in this repository,
+# including this file and MAINTAINERS.md, and is automatically
+# requested for review on every pull request.
+* @project-openan/maintainers-website
