@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OpenAN Demo - To be done</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../src/images/openan-logo.png">
+<style>
+  :root {
+    --void: #06080f;
+    --bg: #0c1020;
+    --surface: #121830;
+    --surface-2: #1a2142;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #eef3fb;
+    --text-muted: #8c97b3;
+    --text-dim: #5a648a;
+    --signal: #1aa8e2;
+    --signal-2: #4fc3f7;
+    --accent: #00bcd4;
+    --display: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,168,226,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,168,226,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  }
+  body::after {
+    content: "";
+    position: fixed; top: -20%; left: 50%;
+    width: 1200px; height: 800px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(26,168,226,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,8,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-mark {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.96);
+    padding: 4px;
+  }
+  .logo-mark img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  .logo-text {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.25s;
+  }
+  .btn-ghost {
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 77px);
+    padding: 64px 32px;
+  }
+  .placeholder {
+    text-align: center;
+    max-width: 600px;
+  }
+  .placeholder .icon {
+    width: 80px; height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(26,168,226,0.12), rgba(0,188,212,0.06));
+    border: 1px solid rgba(26,168,226,0.2);
+    display: grid;
+    place-items: center;
+    margin: 0 auto 32px;
+  }
+  .placeholder h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .placeholder h1 em {
+    font-style: normal;
+    font-weight: 500;
+    background: linear-gradient(120deg, var(--signal), var(--signal-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .placeholder p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="../index.html">
+      <div class="logo-mark">
+        <img src="../src/images/openan-logo.png" alt="OpenAN logo">
+      </div>
+      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
+    </a>
+    <a href="../index.html#demo" class="btn btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Demos
+    </a>
+  </div>
+</header>
+
+<div class="page">
+  <div class="placeholder">
+    <div class="icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    </div>
+    <h1>To be <em>done</em></h1>
+    <p>Demo content for this showcase is coming soon. Check back later or browse the other demos to see OpenAN in action.</p>
+  </div>
+</div>
+</body>
+</html>
