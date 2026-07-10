@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Best Practices - OpenAN</title>
+<meta name="description" content="Explore OpenAN best practices: multi-agent collaboration in telecom scenarios powered by OpenAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="src/images/openan-logo.png">
+<style>
+  :root {
+    --void: #06080f;
+    --bg: #0c1020;
+    --surface: #121830;
+    --surface-2: #1a2142;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #eef3fb;
+    --text-muted: #8c97b3;
+    --text-dim: #5a648a;
+    --signal: #1aa8e2;
+    --signal-2: #4fc3f7;
+    --accent: #00bcd4;
+    --display: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,168,226,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,168,226,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  }
+  body::after {
+    content: "";
+    position: fixed; top: -20%; left: 50%;
+    width: 1200px; height: 800px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(26,168,226,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,8,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-mark {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.96);
+    padding: 4px;
+  }
+  .logo-mark img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  .logo-text {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.25s;
+  }
+  .btn-ghost {
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+
+  .page-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .kicker {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .page-head h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .page-head h1 em {
+    font-style: normal;
+    font-weight: 500;
+    background: linear-gradient(120deg, var(--signal), var(--signal-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-head p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .demo-card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .demo-card:hover {
+    border-color: var(--signal);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
+  }
+  .demo-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, rgba(26,168,226,0.08), rgba(0,188,212,0.04));
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .demo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+  }
+  .demo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 36px 28px 28px;
+    background: linear-gradient(to top, rgba(12,16,32,0.96), rgba(12,16,32,0.5), transparent);
+  }
+  .demo-caption h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .demo-caption p {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 860px) {
+    .demo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <img src="src/images/openan-logo.png" alt="OpenAN logo">
+      </div>
+      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
+    </a>
+    <a href="index.html" class="btn btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+  </div>
+</header>
+
+<div class="page">
+  <div class="page-head">
+    <span class="kicker">/ Best Practices</span>
+    <h1>See OpenAN <em>in action.</em></h1>
+    <p>Explore live demonstrations of multi-agent collaboration in telecom scenarios. Each showcase walks through a real-world autonomous network use case powered by OpenAN.</p>
+  </div>
+
+  <div class="demo-grid">
+    <a href="demo/case1.html" class="demo-card">
+      <div class="demo-image">
+        <img src="src/images/openan-logo-vertical.png" alt="Cross-Domain Fault Handling">
+        <div class="demo-caption">
+          <h3>Cross-Domain Fault Handling via A2P</h3>
+          <p>Multi-agent fault collaboration across P&amp;E and wireless systems at CMCC Fujian</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="demo/case2.html" class="demo-card">
+      <div class="demo-image">
+        <img src="src/images/openan-logo-vertical.png" alt="Complaint Handling Automation">
+        <div class="demo-caption">
+          <h3>Complaint Handling Automation</h3>
+          <p>End-to-end multi-agent complaint resolution in the transmission domain at CMCC Guangdong</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="demo/case3.html" class="demo-card">
+      <div class="demo-image">
+        <img src="src/images/openan-logo-vertical.png" alt="A2A-T Fault Handling Demo">
+        <div class="demo-caption">
+          <h3>A2A-T Fault Handling Live Demo</h3>
+          <p>Power outage simulation with multi-agent orchestration using Task-T, Negotiation-T, and Authorization-T</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+</body>
+</html>

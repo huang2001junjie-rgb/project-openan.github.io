@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 3 — A2A-T Cross-Domain Fault Handling Demo | OpenAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../src/images/openan-logo.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --case-signal: #a78bfa;
+    --case-signal-2: #c4b5fd;
+  }
+  .section h2::before { color: var(--case-signal); }
+  .metric { background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.14); }
+  .metric .value { color: var(--case-signal); }
+  .page-head h1 em {
+    background: linear-gradient(120deg, var(--case-signal), var(--case-signal-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .flow-step .step-label { color: var(--case-signal); }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="../index.html">
+      <div class="logo-mark">
+        <img src="../src/images/openan-logo.png" alt="OpenAN logo">
+      </div>
+      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
+    </a>
+    <a href="../best-practices.html" class="btn btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Best Practices
+    </a>
+  </div>
+</header>
+
+<div class="page">
+  <div class="page-head">
+    <span class="kicker">Case Study 3</span>
+    <h1>A2A-T <em>Fault Handling</em> Live Demo</h1>
+    <p class="subtitle">CMCC Fujian &middot; Multi-Agent Power Outage Response Simulation</p>
+  </div>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>CMCC Fujian pioneers the application of A2A-T in cross-domain fault handling scenarios. With registration of <strong style="color:var(--text);">fault agent, RAN agent, Transmission agent, and power agent</strong> with skills, the registry center by OpenAN provides the best-fit model based on semantic demand. To simulate a real case, CMCC Fujian starts a mock testing on power outage of a district in Fujian.</p>
+    <img class="arch-image" src="images/image1.png" alt="CMCC Fujian A2A-T Fault Handling Overview" style="margin-top:16px;">
+  </div>
+
+  <div class="section">
+    <h2>Agent Orchestration &amp; Fault Location</h2>
+    <p>Fault agent uses A2A-T to invoke RAN agent, transmission agent, and power agent to locate faults.</p>
+    <img class="arch-image" src="images/image2.png" alt="Agent invocation across RAN, transmission, and power" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Engineering Operations Check</h2>
+    <p>At the same time, it invokes the general agent to check whether there are engineering operations.</p>
+    <img class="arch-image" src="images/image3.png" alt="General agent checking engineering operations" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Task-T Definition</h2>
+    <p>Task-T is defined. The Fault agent collaborates with RAN agent, transmission agent, and power agent to locate faults. Based on the Task-T semantic slot, the fault scenario is instantly and deterministically identified.</p>
+    <img class="arch-image" src="images/image4.png" alt="Task-T semantic slot definition" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Root Cause Found</h2>
+    <p>Root cause found.</p>
+    <img class="arch-image" src="images/image5.png" alt="Root cause identified" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Negotiation-T Initiated</h2>
+    <p>Start negotiation-T.</p>
+    <img class="arch-image" src="images/image6.png" alt="Negotiation-T initiation" style="margin-top:14px;">
+    <img class="arch-image" src="images/image7.png" alt="Negotiation-T flow" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Procedure Execution</h2>
+    <p>Procedure starts.</p>
+    <img class="arch-image" src="images/image8.png" alt="Procedure execution" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Step 1 — Emergency Power Restoration</h2>
+    <p>Power agent immediately notifies the maintenance engineer to start the emergency generator to restore power supply.</p>
+    <img class="arch-image" src="images/image9.png" alt="Emergency generator activation" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Step 2 — Coverage Compensation</h2>
+    <p>RAN agent adjusts the power of neighboring cells to compensate for the fault area, ensuring quick service recovery.</p>
+  </div>
+
+  <div class="section">
+    <h2>Authorization-T Created</h2>
+    <p>Authorization-T created.</p>
+    <img class="arch-image" src="images/image10.png" alt="Authorization-T flow" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Service Continuity</h2>
+    <p>The surrounding base stations enable coverage compensation for the faulty base station A to maintain service continuity.</p>
+  </div>
+
+  <div class="section">
+    <h2>Step 3 — Intelligent Assistant Notification</h2>
+    <p>The maintenance engineer receives the power outage repair task synchronously from power agent through the intelligent assistant.</p>
+    <img class="arch-image" src="images/image11.png" alt="Intelligent assistant notification" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Recovery Complete</h2>
+    <p>The alarm is cleared and power supply to the equipment room is restored. Maintenance engineers close work orders through the intelligent assistant. Adjacent station compensation cancelled.</p>
+    <img class="arch-image" src="images/image12.png" alt="Alarm cleared and recovery complete" style="margin-top:14px;">
+  </div>
+
+  <div class="section">
+    <h2>Conclusion</h2>
+    <p>This demonstration fully showcases how A2A-T enables rapid fault demarcation and localization for MBB network ultra-fast service recovery, and seamless service assurance, achieving integrated intelligent O&amp;M capabilities through multi-agent collaboration.</p>
+  </div>
+
+  <div class="section">
+    <h2>Key Achievements &amp; Metrics</h2>
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="label">Fault Localization</div>
+        <div class="value">Instant</div>
+      </div>
+      <div class="metric">
+        <div class="label">Agent Types</div>
+        <div class="value">4+</div>
+      </div>
+      <div class="metric">
+        <div class="label">A2A-T Extensions</div>
+        <div class="value">Task-T, Negotiation-T, Authorization-T</div>
+      </div>
+      <div class="metric">
+        <div class="label">Pilot Location</div>
+        <div class="value">CMCC Fujian</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Source: CMCC Fujian A2A-T Cross-Domain Fault Handling Demo</div>
+</div>
+</body>
+</html>

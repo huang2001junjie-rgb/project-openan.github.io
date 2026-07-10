@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 1 — Cross-Domain Fault Handling | OpenAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../src/images/openan-logo.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .accent { color: var(--signal); }
+  .metric .value { color: var(--signal); }
+  .section h2::before { color: var(--signal); }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="../index.html">
+      <div class="logo-mark">
+        <img src="../src/images/openan-logo.png" alt="OpenAN logo">
+      </div>
+      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
+    </a>
+    <a href="../best-practices.html" class="btn btn-ghost">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Best Practices
+    </a>
+  </div>
+</header>
+
+<div class="page">
+  <div class="page-head">
+    <span class="kicker">Case Study 1</span>
+    <h1>Cross-Domain <em>Fault Handling</em> via A2P</h1>
+    <p class="subtitle">Agent to Agent Protocol for Telecoms &middot; P&amp;E + Wireless Systems</p>
+  </div>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>Cross-domain fault collaboration between P&amp;E and wireless systems, leveraging the Agent-to-Agent Protocol for Telecoms. Piloted &amp; implemented at <strong style="color:var(--text);">CMCC Fujian</strong>, serving <strong style="color:var(--text);">84.6 million subscribers</strong>. Also piloting with CSPs such as AIS.</p>
+    <div class="highlight">Cross-domain faults are the most troublesome issues for operators — high cost, slow repair, and highly disruptive. Requires multiple domains to jointly locate and collaboratively handle.</div>
+  </div>
+
+  <div class="section">
+    <h2>Architecture</h2>
+    <img class="arch-image" src="../src/images/architecture1.png" alt="Case 1 Architecture — Cross-Domain Fault Handling">
+  </div>
+
+  <div class="section">
+    <h2>Key Achievements &amp; Metrics</h2>
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="label">Interaction Efficiency</div>
+        <div class="value">+50%</div>
+      </div>
+      <div class="metric">
+        <div class="label">Interaction Accuracy</div>
+        <div class="value">90%+</div>
+      </div>
+      <div class="metric">
+        <div class="label">E2E Fault Handling</div>
+        <div class="value">8.8h &rarr; 7.9h</div>
+      </div>
+      <div class="metric">
+        <div class="label">Service Impact Duration</div>
+        <div class="value">3.3h &rarr; 0.1h</div>
+      </div>
+      <div class="metric">
+        <div class="label">Traffic Loss Mitigation</div>
+        <div class="value">693 TB/yr</div>
+      </div>
+      <div class="metric">
+        <div class="label">Workload Saved</div>
+        <div class="value">11 Person-yr</div>
+      </div>
+      <div class="metric">
+        <div class="label">Integration TTM</div>
+        <div class="value">Months &rarr; Days</div>
+      </div>
+      <div class="metric">
+        <div class="label">Subscribers Covered</div>
+        <div class="value">84.6 Million</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Source: C26.0.995 — Slide 9 | Agent to Agent Protocol for Telecoms</div>
+</div>
+</body>
+</html>
