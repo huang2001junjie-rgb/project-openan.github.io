@@ -1075,8 +1075,67 @@
     .arch-meta { flex-direction: column; gap: 16px; }
   }
 
+  /* ---------- PARTNER LOGO CAROUSEL ---------- */
+  .partner-carousel {
+    margin: 60px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .partner-carousel::before,
+  .partner-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .partner-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--void), transparent);
+  }
+  .partner-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--void), transparent);
+  }
+  .partner-track {
+    display: flex;
+    align-items: center;
+    animation: scrollLogos 30s linear infinite;
+    width: max-content;
+  }
+  .partner-track:hover {
+    animation-play-state: paused;
+  }
+  .partner-logo {
+    height: 48px;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 64px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .partner-logo:hover {
+    opacity: 1;
+  }
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition-duration: 0.01ms !important;
+    }
+    .partner-track {
+      animation: scrollLogos 30s linear infinite !important;
+    }
+    .partner-track:hover {
+      animation-play-state: paused !important;
+    }
   }
 </style>
 </head>
@@ -1530,6 +1589,29 @@
         <h2>Technical Steering<br/><em>Committee.</em></h2>
       </div>
       <p>The Technical Steering Committee (TSC) oversees design and development activities, sets release and quality standards, mediates technical conflicts, and organizes inter-project collaboration across the OpenAN ecosystem. An Adopter Advisory Committee (AAC) provides input and industry perspective.</p>
+    </div>
+
+    <!-- PARTNER LOGO CAROUSEL -->
+    <div class="partner-carousel">
+      <div class="partner-track">
+        <img class="partner-logo" src="./src/images/中国移动.png" alt="China Mobile" />
+        <img class="partner-logo" src="./src/images/huawei.webp" alt="Huawei" />
+        <img class="partner-logo" src="./src/images/orange.svg.webp" alt="Orange" />
+        <img class="partner-logo" src="./src/images/ZTE.webp" alt="ZTE" />
+        <img class="partner-logo" src="./src/images/AIS.svg" alt="AIS" />
+        <img class="partner-logo" src="./src/images/infosys.webp" alt="Infosys" />
+        <img class="partner-logo" src="./src/images/asianinfo.png" alt="AsiaInfo" />
+        <img class="partner-logo" src="./src/images/personal.webp" alt="Personal / Telecom Argentina" />
+        <!-- second copy for seamless loop -->
+        <img class="partner-logo" src="./src/images/中国移动.png" alt="China Mobile" />
+        <img class="partner-logo" src="./src/images/huawei.webp" alt="Huawei" />
+        <img class="partner-logo" src="./src/images/orange.svg.webp" alt="Orange" />
+        <img class="partner-logo" src="./src/images/ZTE.webp" alt="ZTE" />
+        <img class="partner-logo" src="./src/images/AIS.svg" alt="AIS" />
+        <img class="partner-logo" src="./src/images/infosys.webp" alt="Infosys" />
+        <img class="partner-logo" src="./src/images/asianinfo.png" alt="AsiaInfo" />
+        <img class="partner-logo" src="./src/images/personal.webp" alt="Personal / Telecom Argentina" />
+      </div>
     </div>
 
     <div class="tsc-grid">
