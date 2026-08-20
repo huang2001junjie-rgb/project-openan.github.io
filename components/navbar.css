@@ -1,0 +1,178 @@
+/* ============================================================
+   Navbar Component - shared navigation styles (single source of truth)
+   Depends on CSS variables (--void/--border/--signal etc.) defined in
+   each page's :root.
+   Inline navbar styles are forbidden in pages.
+   Provides the .container / .btn* system required by the component:
+   all three pages reference this file, and the .btn* styles used by
+   page content areas (hero CTA, gov-cta, etc.) also come from here.
+   ============================================================ */
+
+/* ---------- CONTAINER (layout container required by the component) ---------- */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- TOP UTILITY BAR ---------- */
+.topbar {
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,8,15,0.6);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 50;
+}
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+.topbar a { color: var(--text-muted); }
+.topbar a:hover { color: var(--signal); }
+.topbar-right { display: flex; gap: 24px; }
+
+/* ---------- HEADER ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(6,8,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-mark {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.96);
+  padding: 4px;
+}
+.logo-mark img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.logo-text {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.logo-text span {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  display: block;
+  margin-top: -2px;
+  text-transform: uppercase;
+}
+
+/* ---------- NAV ---------- */
+.nav {
+  display: flex;
+  gap: 36px;
+  font-size: 0.92rem;
+  font-weight: 400;
+}
+.nav a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  position: relative;
+  padding: 6px 0;
+}
+.nav a:hover { color: var(--text); }
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1px;
+  background: var(--signal);
+  transition: right 0.3s ease;
+}
+.nav a:hover::after { right: 0; }
+.nav a.active { color: var(--text); }
+.nav a.active::after { right: 0; }
+
+/* ---------- HEADER ACTIONS ---------- */
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.icon-btn {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s;
+}
+.icon-btn:hover { border-color: var(--signal); color: var(--signal); }
+
+/* ---------- BUTTONS (shared by header-actions and page content areas) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: all 0.25s;
+}
+.btn-primary {
+  background: var(--signal);
+  color: var(--void);
+}
+.btn-primary:hover {
+  background: var(--text);
+  box-shadow: 0 0 0 4px rgba(26,168,226,0.18);
+}
+.btn-ghost {
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+
+/* ---------- HAMBURGER (purely decorative, no JS, existing state) ---------- */
+.hamburger {
+  display: none;
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  place-items: center;
+  cursor: pointer;
+  background: none;
+  color: var(--text);
+}
+.hamburger:hover { border-color: var(--signal); color: var(--signal); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .nav { display: none; }
+  .hamburger { display: grid; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .topbar-right { display: none; }
+  .header-actions .btn-ghost { display: none; }
+}

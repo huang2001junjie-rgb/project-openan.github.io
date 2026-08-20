@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="./src/images/openan-logo.png">
+<link rel="stylesheet" href="components/navbar.css">
 <style>
   :root {
     --void: #06080f;
@@ -126,149 +127,6 @@
     line-height: 1.6;
   }
   .section-tag { color: var(--signal); }
-
-  /* ---------- TOP UTILITY BAR ---------- */
-  .topbar {
-    border-bottom: 1px solid var(--border);
-    background: rgba(6,8,15,0.6);
-    backdrop-filter: blur(8px);
-    position: relative;
-    z-index: 50;
-  }
-  .topbar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: var(--text-dim);
-  }
-  .topbar a { color: var(--text-muted); }
-  .topbar a:hover { color: var(--signal); }
-  .topbar-right { display: flex; gap: 24px; }
-
-  /* ---------- HEADER ---------- */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(6,8,15,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .logo-mark {
-    width: 40px; height: 40px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.96);
-    padding: 4px;
-  }
-  .logo-mark img {
-    width: 100%; height: 100%;
-    object-fit: contain;
-  }
-  .logo-text {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
-  }
-  .logo-text span {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    color: var(--text-dim);
-    display: block;
-    margin-top: -2px;
-    text-transform: uppercase;
-  }
-
-  .nav {
-    display: flex;
-    gap: 36px;
-    font-size: 0.92rem;
-    font-weight: 400;
-  }
-  .nav a {
-    color: var(--text-muted);
-    transition: color 0.2s;
-    position: relative;
-    padding: 6px 0;
-  }
-  .nav a:hover { color: var(--text); }
-  .nav a::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 100%; bottom: 0;
-    height: 1px;
-    background: var(--signal);
-    transition: right 0.3s ease;
-  }
-  .nav a:hover::after { right: 0; }
-
-  .header-actions { display: flex; align-items: center; gap: 20px; }
-  .icon-btn {
-    width: 38px; height: 38px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    transition: all 0.2s;
-  }
-  .icon-btn:hover { border-color: var(--signal); color: var(--signal); }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 20px;
-    border-radius: 999px;
-    font-weight: 500;
-    font-size: 0.92rem;
-    transition: all 0.25s;
-  }
-  .btn-primary {
-    background: var(--signal);
-    color: var(--void);
-  }
-  .btn-primary:hover {
-    background: var(--text);
-    box-shadow: 0 0 0 4px rgba(26,168,226,0.18);
-  }
-  .btn-ghost {
-    border: 1px solid var(--border-strong);
-    color: var(--text);
-  }
-  .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
-
-  .hamburger {
-    display: none;
-    width: 38px; height: 38px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    place-items: center;
-    cursor: pointer;
-    background: none;
-    color: var(--text);
-  }
-  .hamburger:hover { border-color: var(--signal); color: var(--signal); }
 
   /* ---------- HERO ---------- */
   .hero {
@@ -762,6 +620,131 @@
     letter-spacing: 0.05em;
   }
 
+  /* ---------- DEMO ---------- */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .demo-card {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .demo-card:hover {
+    border-color: var(--signal);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
+  }
+  .demo-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, rgba(26,168,226,0.08), rgba(0,188,212,0.04));
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .demo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+  }
+  .demo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 36px 28px 28px;
+    background: linear-gradient(to top, rgba(12,16,32,0.96), rgba(12,16,32,0.5), transparent);
+  }
+  .demo-caption h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .demo-caption p {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  /* ---------- GOVERNANCE ---------- */
+  .tsc-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+  }
+  .tsc-info p {
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+  .tsc-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .tsc-members-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+  .tsc-members-card h4 {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+  .tsc-member {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+  }
+  .tsc-member:first-of-type { border-top: none; }
+  .tsc-member-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(26,168,226,0.08);
+    border: 1px solid rgba(26,168,226,0.2);
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--signal);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .tsc-member-name { font-weight: 500; font-size: 0.92rem; }
+  .tsc-member-org {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+  .tsc-note {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
   /* ---------- JOIN CTA ---------- */
   .join-cta {
     padding: 140px 0;
@@ -909,8 +892,6 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 1024px) {
-    .nav { display: none; }
-    .hamburger { display: grid; }
     .hero { padding: 100px 0 100px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
     .cap-grid { grid-template-columns: 1fr; }
@@ -928,6 +909,7 @@
     .roadmap-grid::before { display: none; }
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
     .community-grid { grid-template-columns: repeat(2, 1fr); }
+    .demo-grid { grid-template-columns: 1fr; }
     .tsc-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
     .section-head { grid-template-columns: 1fr; gap: 24px; align-items: start; margin-bottom: 48px; }
@@ -942,68 +924,79 @@
     .steps-grid { grid-template-columns: 1fr; }
     .roadmap-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
-    .topbar-right { display: none; }
-    .header-actions .btn-ghost { display: none; }
     .newsletter-form { flex-direction: column; border-radius: 16px; padding: 8px; }
     .newsletter-form button { border-radius: 12px; }
     .arch-meta { flex-direction: column; gap: 16px; }
   }
 
+  /* ---------- PARTNER LOGO GRID ---------- */
+  .partner-grid {
+    margin: 60px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    align-items: center;
+    justify-items: center;
+  }
+  .partner-logo {
+    height: 56px;
+    width: auto;
+    max-width: 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .partner-logo:hover {
+    opacity: 1;
+  }
+
+  /* Orange and Huawei logos render smaller at 56px; widen them slightly */
+  .partner-logo[alt="Orange"] {
+    height: 120px;
+  }
+  .partner-logo[alt="Huawei"] {
+    height: 80px;
+  }
+
+  .partner-note {
+    margin: 24px auto 0;
+    max-width: 620px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .partner-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- TOP UTILITY BAR -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <a href="https://lfnetworking.org">Part of LF Networking, a Linux Foundation project (candidate)</a>
-    <div class="topbar-right">
-      <a href="https://github.com/project-openan">GitHub</a>
-      <a href="https://linuxfoundation.zulipchat.com">Zulip</a>
+<!-- NAVBAR COMPONENT — injected from components/navbar.html by components/navbar.js -->
+<div id="navbar" data-active="index">
+  <noscript>
+    <div class="container" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding-top:14px; padding-bottom:14px; font-size:0.9rem;">
+      <a href="index.html" style="font-weight:600;">OpenAN</a>
+      <a href="index.html#about">About</a>
+      <a href="best-practices.html">Best Practices</a>
+      <a href="index.html#architecture">Architecture</a>
+      <a href="index.html#components">Components</a>
+      <a href="index.html#roadmap">Roadmap</a>
+      <a href="index.html#community">Community</a>
+      <a href="governance.html">Governance</a>
     </div>
-  </div>
+  </noscript>
 </div>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="container header-inner">
-    <a class="logo" href="#">
-      <div class="logo-mark">
-        <img src="./src/images/openan-logo.png" alt="OpenAN logo">
-      </div>
-      <div class="logo-text">
-        Open<b style="color: var(--signal); font-weight: 500;">AN</b>
-        <span>Open Autonomous Networks</span>
-      </div>
-    </a>
-
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#components">Components</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#community">Community</a>
-      <a href="./governance.html">Governance</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="https://github.com/project-openan" class="icon-btn" aria-label="GitHub">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.59 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.13-4.55-5.05 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.5 9.5 0 0 1 12 7.36c.85.01 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.59.69.49C19.14 20.61 22 16.78 22 12.25 22 6.59 17.52 2 12 2z"/></svg>
-      </a>
-      <a href="#community" class="btn btn-ghost">Join the community</a>
-      <a href="#get-involved" class="btn btn-primary">
-        Get involved
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <button class="hamburger" aria-label="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-  </div>
-</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -1394,6 +1387,31 @@
   </div>
 </section>
 
+<!-- ECOSYSTEM PARTICIPANTS -->
+<section id="participants">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="kicker section-tag">/ Ecosystem Participants</span>
+        <h2>Ecosystem Participants</h2>
+      </div>
+      <p>Any vendor, operator, or individual contributing or using OpenAN is welcome to join the ecosystem.</p>
+    </div>
+
+    <div class="partner-grid">
+        <img class="partner-logo" src="./src/images/participants-logo/china_mobile.png" alt="China Mobile" />
+        <img class="partner-logo" src="./src/images/participants-logo/huawei.png" alt="Huawei" />
+        <img class="partner-logo" src="./src/images/participants-logo/orange.png" alt="Orange" />
+        <img class="partner-logo" src="./src/images/participants-logo/ZTE.webp" alt="ZTE" />
+        <img class="partner-logo" src="./src/images/participants-logo/ais.png" alt="AIS" />
+        <img class="partner-logo" src="./src/images/participants-logo/infosys.webp" alt="Infosys" />
+        <img class="partner-logo" src="./src/images/participants-logo/asianinfo.png" alt="AsiaInfo" />
+        <img class="partner-logo" src="./src/images/participants-logo/personal.webp" alt="Personal / Telecom Argentina" />
+    </div>
+
+    <p class="partner-note"><em>Participant logos displayed in no particular order and do not imply a ranking or preference.</em></p>
+  </div>
+</section>
 
 <!-- JOIN CTA -->
 <section class="join-cta" id="join">
@@ -1487,5 +1505,6 @@
   </div>
 </footer>
 
+<script src="components/navbar.js"></script>
 </body>
 </html>

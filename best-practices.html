@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Best Practices - OpenAN</title>
+<meta name="description" content="Explore OpenAN best practices: multi-agent collaboration in telecom scenarios powered by OpenAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="src/images/openan-logo.png">
+<link rel="stylesheet" href="components/navbar.css">
+<style>
+  :root {
+    --void: #06080f;
+    --bg: #0c1020;
+    --surface: #121830;
+    --surface-2: #1a2142;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #eef3fb;
+    --text-muted: #8c97b3;
+    --text-dim: #5a648a;
+    --signal: #1aa8e2;
+    --signal-2: #4fc3f7;
+    --accent: #00bcd4;
+    --display: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,168,226,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,168,226,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  }
+  body::after {
+    content: "";
+    position: fixed; top: -20%; left: 50%;
+    width: 1200px; height: 800px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(26,168,226,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+
+  .page-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .kicker {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .page-head h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .page-head h1 em {
+    font-style: normal;
+    font-weight: 500;
+    background: linear-gradient(120deg, var(--signal), var(--signal-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-head p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .practice-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .practice-card:hover {
+    border-color: var(--signal);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
+  }
+  .practice-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: rgba(26,168,226,0.06);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .practice-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+  }
+  .practice-body {
+    padding: 30px;
+  }
+  .practice-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .practice-subject {
+    display: block;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--signal);
+    margin-bottom: 16px;
+  }
+  .practice-divider {
+    height: 1px;
+    background: var(--border-strong);
+    margin-bottom: 16px;
+  }
+  .practice-desc {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .practice-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<!-- NAVBAR COMPONENT — injected from components/navbar.html by components/navbar.js -->
+<div id="navbar" data-active="best-practices">
+  <noscript>
+    <div class="container" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding-top:14px; padding-bottom:14px; font-size:0.9rem;">
+      <a href="index.html" style="font-weight:600;">OpenAN</a>
+      <a href="index.html#about">About</a>
+      <a href="best-practices.html">Best Practices</a>
+      <a href="index.html#architecture">Architecture</a>
+      <a href="index.html#components">Components</a>
+      <a href="index.html#roadmap">Roadmap</a>
+      <a href="index.html#community">Community</a>
+      <a href="governance.html">Governance</a>
+    </div>
+  </noscript>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <span class="kicker">/ Best Practices</span>
+    <h1>See OpenAN <em>in action.</em></h1>
+    <p>Explore live demonstrations of multi-agent collaboration in telecom scenarios. Each showcase walks through a real-world autonomous network use case powered by OpenAN.</p>
+  </div>
+
+  <div class="practice-grid">
+    <a href="best-practices/case1.html" class="practice-card">
+      <div class="practice-image">
+        <img src="best-practices/images/case1_pic.png" alt="Cross-Domain Fault Handling">
+      </div>
+      <div class="practice-body">
+        <h3 class="practice-title">Cross-Domain Fault Handling via A2A-T</h3>
+        <span class="practice-subject">CMCC Fujian</span>
+        <div class="practice-divider"></div>
+        <p class="practice-desc">Multi-agent fault collaboration across P&amp;E and wireless systems at CMCC Fujian</p>
+      </div>
+    </a>
+
+    <a href="best-practices/case2.html" class="practice-card">
+      <div class="practice-image">
+        <img src="best-practices/images/case2_pic.png" alt="Complaint Handling Automation">
+      </div>
+      <div class="practice-body">
+        <h3 class="practice-title">Complaint Handling Automation by OpenAN</h3>
+        <span class="practice-subject">CMCC Guangdong</span>
+        <div class="practice-divider"></div>
+        <p class="practice-desc">End-to-end multi-agent complaint resolution in the transmission domain at CMCC Guangdong</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+<script src="components/navbar.js"></script>
+</body>
+</html>
