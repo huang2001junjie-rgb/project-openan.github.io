@@ -42,7 +42,6 @@
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
   /* Layered background: subtle grid + cool radial glow */
@@ -68,16 +67,6 @@
   }
 
   a { color: inherit; text-decoration: none; }
-  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-  img, svg { display: block; max-width: 100%; }
-
-  .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 32px;
-    position: relative;
-    z-index: 1;
-  }
 
   section { padding: 100px 0; position: relative; z-index: 1; }
 
@@ -260,219 +249,6 @@
     transition: opacity 0.2s;
   }
   .pillar-link:hover { opacity: 0.8; }
-
-  /* ---------- ARCHITECTURE CARD ---------- */
-  .architecture-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .arch-content { padding: 56px; }
-  .arch-content h3 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 1.7rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin: 18px 0 18px;
-  }
-  .arch-content p {
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 32px;
-  }
-  .arch-meta {
-    display: flex;
-    gap: 36px;
-    margin-bottom: 32px;
-    padding: 20px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .arch-meta div { display: flex; flex-direction: column; gap: 4px; }
-  .arch-meta strong {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 1.6rem;
-    color: var(--signal);
-  }
-  .arch-meta span {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .arch-visual {
-    background: linear-gradient(135deg, rgba(26,168,226,0.06), rgba(0,188,212,0.04));
-    border-left: 1px solid var(--border);
-    display: grid;
-    place-items: center;
-    min-height: 480px;
-  }
-
-  /* ---------- COMPONENT CARDS ---------- */
-  .components-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .component-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 32px;
-    transition: all 0.25s;
-  }
-  .component-card:hover {
-    border-color: var(--signal);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
-  }
-  .component-num {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--signal);
-    letter-spacing: 0.14em;
-    margin-bottom: 14px;
-    display: block;
-  }
-  .component-card h4 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .component-card .desc {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.65;
-    margin-bottom: 18px;
-  }
-  .component-card .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .component-card .tags span {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    background: var(--surface-2);
-    padding: 4px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.05em;
-  }
-
-  /* ---------- EXTENSIONS / PROJECT CARDS ---------- */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-  }
-  .project-card {
-    background: var(--surface);
-    padding: 32px;
-    transition: background 0.25s;
-  }
-  .project-card:hover { background: var(--surface-2); }
-  .project-card h4 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
-  .project-card h4 .tag {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--signal);
-    background: rgba(26,168,226,0.1);
-    border: 1px solid rgba(26,168,226,0.25);
-    padding: 3px 8px;
-    border-radius: 999px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-  .project-card .desc {
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-  .proj-link {
-    color: var(--signal);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-  }
-
-  /* ---------- USE CASE ---------- */
-  .usecase-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-  .usecase-card h3 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 1.5rem;
-    margin: 18px 0;
-    letter-spacing: -0.02em;
-  }
-  .usecase-card p {
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 14px;
-  }
-  .usecase-flow {
-    background: linear-gradient(135deg, rgba(26,168,226,0.05), rgba(0,188,212,0.03));
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px;
-  }
-  .usecase-flow ol {
-    list-style: none;
-    counter-reset: flow;
-  }
-  .usecase-flow li {
-    counter-increment: flow;
-    padding: 12px 0 12px 44px;
-    border-top: 1px solid var(--border);
-    position: relative;
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-  .usecase-flow li:first-child { border-top: none; }
-  .usecase-flow li::before {
-    content: counter(flow, decimal-leading-zero);
-    position: absolute;
-    left: 0; top: 12px;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--signal);
-    letter-spacing: 0.05em;
-  }
-  .usecase-flow li strong { color: var(--text); font-weight: 500; }
 
   /* ---------- ROADMAP ---------- */
   .roadmap-card {
@@ -816,6 +592,8 @@
     padding: 12px 24px;
     background: var(--signal);
     color: var(--void);
+    border: none;
+    cursor: pointer;
     border-radius: 999px;
     font-weight: 500;
     font-size: 0.9rem;
@@ -898,12 +676,6 @@
     .pillar { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 0 !important; }
     .pillar:last-child { border-bottom: none; }
     .pillar-num { margin-bottom: 24px; }
-    .architecture-card { grid-template-columns: 1fr; }
-    .arch-content { padding: 40px; }
-    .arch-visual { border-left: none; border-top: 1px solid var(--border); min-height: 360px; padding: 32px; }
-    .components-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    .usecase-card { grid-template-columns: 1fr; gap: 32px; padding: 36px; }
     .roadmap-card { padding: 36px; }
     .roadmap-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
     .roadmap-grid::before { display: none; }
@@ -915,18 +687,13 @@
     .section-head { grid-template-columns: 1fr; gap: 24px; align-items: start; margin-bottom: 48px; }
   }
   @media (max-width: 640px) {
-    .container { padding: 0 20px; }
     section { padding: 72px 0; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat { border-left: none; padding-left: 0; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .community-grid { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: 1fr; }
     .roadmap-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .newsletter-form { flex-direction: column; border-radius: 16px; padding: 8px; }
     .newsletter-form button { border-radius: 12px; }
-    .arch-meta { flex-direction: column; gap: 16px; }
   }
 
   /* ---------- PARTNER LOGO GRID ---------- */
@@ -944,6 +711,12 @@
     max-width: 100%;
     opacity: 0.7;
     transition: opacity 0.3s;
+  }
+.partner-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
   }
   .partner-logo:hover {
     opacity: 1;
@@ -989,8 +762,7 @@
       <a href="index.html" style="font-weight:600;">OpenAN</a>
       <a href="index.html#about">About</a>
       <a href="best-practices.html">Best Practices</a>
-      <a href="index.html#architecture">Architecture</a>
-      <a href="index.html#components">Components</a>
+      <a href="architecture.html">Architecture</a>
       <a href="index.html#roadmap">Roadmap</a>
       <a href="index.html#community">Community</a>
       <a href="governance.html">Governance</a>
@@ -1064,7 +836,7 @@
         <span class="pillar-num">01 / E2E Closed Loop</span>
         <h3>Multi-agent collaboration across every layer.</h3>
         <p>Accelerate cross-layer and cross-domain integration and deployment of telecom-specific agents. OpenAN enables multi-agent collaboration so global operators benefit from efficient orchestration and interaction across the AN stack.</p>
-        <a href="#architecture" class="pillar-link">See the architecture &#8594;</a>
+        <a href="architecture.html" class="pillar-link">See the architecture &#8594;</a>
       </div>
       <div class="pillar">
         <span class="pillar-num">02 / Vendor Neutral</span>
@@ -1077,163 +849,6 @@
         <h3>Toward Autonomous Networks Level 5.</h3>
         <p>OpenAN aims to be the de facto standard for autonomous network operation in telecom, and to explore integration and collaboration for the next generation of intelligent systems aimed at AN L5.</p>
         <a href="#roadmap" class="pillar-link">View the roadmap &#8594;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ARCHITECTURE -->
-<section id="architecture" style="padding-top: 40px;">
-  <div class="container">
-    <div class="architecture-card">
-      <div class="arch-content">
-        <span class="kicker">Project Scope</span>
-        <h3>A multi-agent collaboration framework for OSS, EMS, and the network layer.</h3>
-        <p>OpenAN sits between the service layer (OSS copilots, optimization and fault agents) and the network layer (RAN, fixed access, IP, core). The A2A-T SDK extends Google's A2A protocol with telecom-grade primitives so agents in either layer can register, discover, negotiate, and act safely on the network.</p>
-
-        <div class="arch-meta">
-          <div>
-            <strong>3</strong>
-            <span>Open source components</span>
-          </div>
-          <div>
-            <strong>4</strong>
-            <span>A2A-T extensions</span>
-          </div>
-          <div>
-            <strong>2</strong>
-            <span>Transport protocols</span>
-          </div>
-        </div>
-
-        <a href="#components" class="btn btn-primary">
-          Explore the components
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <div class="arch-visual">
-        <img src="src/images/openan-arch.png" alt="OpenAN Architecture Diagram" style="max-width:100%;height:auto;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPONENTS -->
-<section id="components">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="kicker section-tag">/ Seed Components</span>
-        <h2>Three components,<br/><em>open sourced together.</em></h2>
-      </div>
-      <p>In June 2026 at DTW-Copenhagen, OpenAN open sources its three seed components. From September to December, scenario-based solution packages are released through joint innovation with operators.</p>
-    </div>
-
-    <div class="components-grid">
-      <div class="component-card">
-        <span class="component-num">01 / SDK</span>
-        <h4>A2A-T SDK</h4>
-        <p class="desc">A telecom-grade extension of the A2A protocol, designed for deterministic, network-scenario-compliant cross-layer agent collaboration. Supports JSON-RPC and HTTP+REST.</p>
-        <div class="tags">
-          <span>JSON-RPC</span>
-          <span>HTTP+REST</span>
-          <span>Apache 2.0</span>
-          <span>A2A-T-SDK-Python</span>
-          <span>A2A-T-SDK-Java</span>
-        </div>
-      </div>
-      <div class="component-card">
-        <span class="component-num">02 / Discovery</span>
-        <h4>Registry Center</h4>
-        <p class="desc">The "agent labor market" — a yellow-pages service that finds and manages agent addresses, registers skills, handles health management, and uses LLM-aided retrieval to map intents to the right agent.</p>
-        <div class="tags">
-          <span>Agent Cards</span>
-          <span>Skill Registry</span>
-          <span>RAG Retrieval</span>
-        </div>
-      </div>
-      <div class="component-card">
-        <span class="component-num">03 / Workflow</span>
-        <h4>Orchestration Center</h4>
-        <p class="desc">A hub that orchestrates agents into reliable, reusable workflows via a workflow canvas, condition editor, property manager, and a workflow market — bridging manual design and autonomous programming.</p>
-        <div class="tags">
-          <span>Workflow Canvas</span>
-          <span>Autonomous Programming</span>
-          <span>Knowledge &amp; RAG</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- A2A-T EXTENSIONS -->
-<section style="padding-top: 40px;">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="kicker section-tag">/ A2A-T Extensions</span>
-        <h2>Telecom-grade primitives on top<br/>of <em>the A2A protocol.</em></h2>
-      </div>
-      <p>A2A is the foundation for inter-agent communication. For telecom, A2A-T adds four extensions so agents can describe tasks precisely, share network events efficiently, negotiate around ambiguity, and act on the network only with explicit authorization.</p>
-    </div>
-
-    <div class="projects-grid">
-      <div class="project-card">
-        <h4>Task-T <span class="tag">Schema</span></h4>
-        <div class="desc">A structured task schema that defines a deterministic prompt for each task, eliminating the ambiguity of free-form requests between agents.</div>
-      </div>
-      <div class="project-card">
-        <h4>Notification-T <span class="tag">Eventing</span></h4>
-        <div class="desc">Network event subscription and publication. Optimized for the data/event reporting patterns that telecom O&amp;M relies on at scale.</div>
-      </div>
-      <div class="project-card">
-        <h4>Negotiation-T <span class="tag">Control</span></h4>
-        <div class="desc">Controllable, structured negotiation between agents to resolve ambiguity and confirm feasibility before action is taken.</div>
-      </div>
-      <div class="project-card">
-        <h4>Authorization-T <span class="tag">Security</span></h4>
-        <div class="desc">Dynamic security: agent card and skill limitations plus explicit authorization before any agent makes network-changing operations.</div>
-      </div>
-      <div class="project-card">
-        <h4>Agent Cards <span class="tag">Base</span></h4>
-        <div class="desc">A2A base fields — name, description, URL, provider, version, capabilities, authentication, default input modes, and skills — fully reused by A2A-T.</div>
-      </div>
-      <div class="project-card">
-        <h4>Transport <span class="tag">Protocol</span></h4>
-        <div class="desc">JSON-RPC for fixed-format, one-way messages; HTTP+REST for stateful, long-lived connections over URL-addressable resources.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASE -->
-<section style="padding-top: 40px;">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="kicker section-tag">/ Multi-Agent Use Case</span>
-        <h2>Home broadband<br/><em>complaint handling.</em></h2>
-      </div>
-      <p>When a customer calls in with "no internet for two days" or "YouTube is slow", OpenAN orchestrates the right agents end-to-end — billing, CDN, RAN, and vendor-specific fault agents — and hands off to a human expert only when needed.</p>
-    </div>
-
-    <div class="usecase-card">
-      <div>
-        <span class="kicker">Workflow</span>
-        <h3>From call center to NOC, with humans in the loop.</h3>
-        <p>The Home Broadband Complaint Handling Agent recalls a workflow from the Orchestration Center, retrieves the matching agents from the Registry Center, and coordinates them over A2A-T.</p>
-        <p>Different complaints trigger different workflows: a billing issue invokes the customer-care and billing agents; a CDN issue invokes customer-care, the CDN agent, and a vendor FAN agent.</p>
-      </div>
-
-      <div class="usecase-flow">
-        <ol>
-          <li><strong>Intent capture</strong> — Call center receives the customer complaint and forwards intent to the Complaint Handling Agent.</li>
-          <li><strong>Workflow recall</strong> — The Orchestration Center selects the workflow that matches the complaint type.</li>
-          <li><strong>Agent retrieval</strong> — The Registry Center returns matching agent cards (customer care, billing, CDN, vendor FAN, etc.).</li>
-          <li><strong>Multi-agent execution</strong> — Agents collaborate over A2A-T to diagnose and resolve the issue.</li>
-          <li><strong>Expert handoff</strong> — When the workflow cannot resolve the case, the NOC expert is brought in with full context.</li>
-        </ol>
       </div>
     </div>
   </div>
@@ -1399,14 +1014,14 @@
     </div>
 
     <div class="partner-grid">
-        <img class="partner-logo" src="./src/images/participants-logo/china_mobile.png" alt="China Mobile" />
-        <img class="partner-logo" src="./src/images/participants-logo/huawei.png" alt="Huawei" />
-        <img class="partner-logo" src="./src/images/participants-logo/orange.png" alt="Orange" />
-        <img class="partner-logo" src="./src/images/participants-logo/ZTE.webp" alt="ZTE" />
-        <img class="partner-logo" src="./src/images/participants-logo/ais.png" alt="AIS" />
-        <img class="partner-logo" src="./src/images/participants-logo/infosys.webp" alt="Infosys" />
-        <img class="partner-logo" src="./src/images/participants-logo/asianinfo.png" alt="AsiaInfo" />
-        <img class="partner-logo" src="./src/images/participants-logo/personal.webp" alt="Personal / Telecom Argentina" />
+        <a href="https://www.chinamobileltd.com" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/china_mobile.png" alt="China Mobile" /></a>
+        <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/huawei.png" alt="Huawei" /></a>
+        <a href="https://www.orange.com" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/orange.png" alt="Orange" /></a>
+        <a href="https://www.zte.com.cn" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/zte.webp" alt="ZTE" /></a>
+        <a href="https://www.ais.co.th" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/ais.png" alt="AIS" /></a>
+        <a href="https://www.infosys.com" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/infosys.webp" alt="Infosys" /></a>
+        <a href="https://www.asiainfo.com" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/asianinfo.png" alt="AsiaInfo" /></a>
+        <a href="https://www.telecom.com.ar" target="_blank" rel="noopener noreferrer"><img class="partner-logo" src="./src/images/participants-logo/personal.webp" alt="Personal / Telecom Argentina" /></a>
     </div>
 
     <p class="partner-note"><em>Participant logos displayed in no particular order and do not imply a ranking or preference.</em></p>
@@ -1452,8 +1067,7 @@
         <h5>Project</h5>
         <ul>
           <li><a href="#about">Mission</a></li>
-          <li><a href="#architecture">Architecture</a></li>
-          <li><a href="#components">Components</a></li>
+          <li><a href="architecture.html">Architecture</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
         </ul>
       </div>
