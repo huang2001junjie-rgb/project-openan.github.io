@@ -1,0 +1,106 @@
+/*
+ * practice-card.css — Shared card component for best-practices.html
+ *
+ * Card structure (copy this template when adding a new card):
+ *
+ *   <a href="best-practices/DETAIL_PAGE.html" class="practice-card">
+ *     <div class="practice-image">
+ *       <img src="CARD_IMAGE" alt="CARD TITLE">
+ *     </div>
+ *     <div class="practice-body">
+ *       <h3 class="practice-title">CARD TITLE</h3>
+ *       <span class="practice-subject">SUBJECT LABEL</span>
+ *       <div class="practice-divider"></div>
+ *       <p class="practice-desc">ONE-LINE DESCRIPTION</p>
+ *     </div>
+ *   </a>
+ *
+ * Image requirements:
+ *   - 800x600 px, 4:3 aspect ratio (center-cropped)
+ *   - object-fit: contain with 16px padding inside the image area
+ *
+ * Grid: 3 columns on desktop, 2 on tablet (<=1024px), 1 on mobile (<=640px)
+ *
+ * Depends on CSS variables from best-practices.html :root:
+ *   --surface, --border, --signal, --text, --text-muted, --border-strong,
+ *   --display, --sans
+ */
+
+/* ---------- CARD GRID ---------- */
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---------- CARD ---------- */
+.practice-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s;
+}
+.practice-card:hover {
+  border-color: var(--signal);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
+}
+
+/* ---------- CARD IMAGE ---------- */
+.practice-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(26,168,226,0.06);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.practice-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+}
+
+/* ---------- CARD BODY ---------- */
+.practice-body {
+  padding: 30px;
+}
+.practice-title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.practice-subject {
+  display: block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--signal);
+  margin-bottom: 16px;
+}
+.practice-divider {
+  height: 1px;
+  background: var(--border-strong);
+  margin-bottom: 16px;
+}
+.practice-desc {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .practice-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .practice-grid { grid-template-columns: 1fr; }
+}

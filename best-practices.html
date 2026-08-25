@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="src/images/openan-logo.png">
 <link rel="stylesheet" href="components/navbar.css">
+<link rel="stylesheet" href="best-practices/practice-card.css">
 <style>
   :root {
     --void: #06080f;
@@ -104,71 +105,6 @@
   .page-head p {
     color: var(--text-muted);
     font-size: 1.05rem;
-    line-height: 1.6;
-  }
-
-  .practice-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 440px;
-    gap: 20px;
-  }
-  .practice-card {
-    display: block;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: all 0.25s;
-  }
-  .practice-card:hover {
-    border-color: var(--signal);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px -16px rgba(26,168,226,0.4);
-  }
-  .practice-image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    background: rgba(26,168,226,0.06);
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-  }
-  .practice-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 16px;
-  }
-  .practice-body {
-    padding: 30px;
-  }
-  .practice-title {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 1.3rem;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-  .practice-subject {
-    display: block;
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: var(--signal);
-    margin-bottom: 16px;
-  }
-  .practice-divider {
-    height: 1px;
-    background: var(--border-strong);
-    margin-bottom: 16px;
-  }
-  .practice-desc {
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    color: var(--text-muted);
     line-height: 1.6;
   }
 
@@ -271,7 +207,7 @@
   <div class="practice-grid">
     <a href="best-practices/usecase.html" class="practice-card">
       <div class="practice-image">
-        <img src="src\images\usecase_profile.jpg" alt="Home Broadband Complaint Handling">
+        <img src="src/images/usecase_profile.jpg?v=2" alt="Home Broadband Complaint Handling">
       </div>
       <div class="practice-body">
         <h3 class="practice-title">Home Broadband Complaint Handling</h3>
@@ -281,6 +217,29 @@
       </div>
     </a>
 
+    <a href="best-practices/cross-domain-fault-handling-via-a2a-t.html" class="practice-card">
+      <div class="practice-image">
+        <img src="best-practices/images/fujian_mobile_pic.png?v=2" alt="Cross-Domain Fault Handling via A2A-T">
+      </div>
+      <div class="practice-body">
+        <h3 class="practice-title">Cross-Domain Fault Handling via A2A-T</h3>
+        <span class="practice-subject">A2A-T Live Demo</span>
+        <div class="practice-divider"></div>
+        <p class="practice-desc">Cross-domain fault collaboration between P&amp;E and wireless systems, piloted at CMCC Fujian serving 84.6 million subscribers</p>
+      </div>
+    </a>
+
+    <a href="best-practices/e2e-complaint-handling-automation.html" class="practice-card">
+      <div class="practice-image">
+        <img src="best-practices/images/guangdong_mobile_pic.png?v=2" alt="End-to-End Complaint Handling Automation">
+      </div>
+      <div class="practice-body">
+        <h3 class="practice-title">End-to-End Complaint Handling Automation</h3>
+        <span class="practice-subject">A2A-T Pilot Case</span>
+        <div class="practice-divider"></div>
+        <p class="practice-desc">End-to-end automation of complaint handling through A2A-T multi-agent collaboration, piloted at CMCC Guangdong — reducing integration TTM from months to days</p>
+      </div>
+    </a>
   </div>
 </div>
 
