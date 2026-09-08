@@ -206,6 +206,32 @@
     letter-spacing: 0.05em;
   }
 
+  .committee-intro {
+    max-width: 820px;
+    margin: 0 0 48px 0;
+  }
+  .committee-intro .committee-title {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 14px 0 18px;
+  }
+  .committee-intro .committee-title em {
+    font-style: normal;
+    font-weight: 500;
+    background: linear-gradient(120deg, var(--signal), var(--signal-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .committee-intro .committee-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
   .member-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -419,38 +445,112 @@
 <section class="page-hero">
   <div class="container">
     <span class="kicker">/ Governance</span>
-    <h1>Technical Steering<br/><em>Committee.</em></h1>
-    <p class="page-hero-sub">The TSC oversees design and development activities, sets release and quality standards, mediates technical conflicts, and organizes inter-project collaboration across the OpenAN ecosystem.</p>
+    <h1>Governance &amp;<br/><em>Steering Structure.</em></h1>
+    <p class="page-hero-sub">OpenAN is governed by three tiers: the Adopter Advisory Committee (AAC) for industry strategy and real-world adoption, the Technical Steering Committee (TSC) for technical direction, and the LF Networking staff for operational support.</p>
   </div>
 </section>
 
-<!-- GOVERNANCE INFO -->
+<!-- AAC MODULE -->
 <section style="padding-top: 0;">
   <div class="container">
-    <div class="gov-info-grid">
-      <div class="gov-info-card">
-        <h4>Project Roles</h4>
-        <p>TSC Chair and Co-Chair, TSC Voting Members, Adopter Advisory Committee (AAC) members, committers, maintainers, and contributors.</p>
+    <div class="committee-intro">
+      <span class="kicker section-tag">/ Industry strategy &amp; landing applications</span>
+      <h2 class="committee-title">Adopter Advisory<em>&nbsp;Committee.</em></h2>
+      <p class="committee-desc">The AAC brings together adopters and operators across the telecom value chain. Members contribute industry perspective on real-world deployment scenarios, commercial-landing requirements, priority use cases, and go-to-market strategy — ensuring OpenAN's roadmap aligns with actual operator and enterprise needs.</p>
+    </div>
+
+    <div class="member-section">
+      <div class="member-section-header">
+        <h3>AAC Members</h3>
+        <span class="count">8 members</span>
       </div>
-      <div class="gov-info-card">
-        <h4>How Roles Are Filled</h4>
-        <p>Defined in <code>GOVERNANCE.md</code> and <code>CONTRIBUTING.md</code>. Removal is by TSC vote.</p>
-      </div>
-      <div class="gov-info-card">
-        <h4>Dispute Resolution</h4>
-        <p>The TSC mediates technical conflicts, with decisions reached by majority vote. The TSC is the body to which the LFN TAC looks for interfaces.</p>
-      </div>
-      <div class="gov-info-card">
-        <h4>Charter Evolution</h4>
-        <p>Governance evolves through changes to the Charter, approved by the TSC.</p>
+
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">A1</div>
+          </div>
+          <div class="name">[AAC Chair]</div>
+          <div class="org">China Mobile</div>
+          <span class="role-tag">Chair</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="./src/images/aac/ShaosenWang.jpg" alt="Shaosen Wang">
+          </div>
+          <div class="name">Shaosen Wang</div>
+          <div class="org">Huawei</div>
+          <span class="role-tag">Co-Chair</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">OS</div>
+          </div>
+          <div class="name">Olivier Simon</div>
+          <div class="org">Orange</div>
+          <span class="role-tag">Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">WW</div>
+          </div>
+          <div class="name">Wasit Wattanasap</div>
+          <div class="org">AIS</div>
+          <span class="role-tag">Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="./src/images/aac/EduardoPanciera.jpg" alt="Eduardo Panciera">
+          </div>
+          <div class="name">Eduardo Panciera</div>
+          <div class="org">Personal</div>
+          <span class="role-tag">Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">SK</div>
+          </div>
+          <div class="name">Sreekanth</div>
+          <div class="org">Infosys</div>
+          <span class="role-tag">Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">SZ</div>
+          </div>
+          <div class="name">Shaowei Zhao</div>
+          <div class="org">ZTE</div>
+          <span class="role-tag">Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <div class="initials">CL</div>
+          </div>
+          <div class="name">Chengkun Liu</div>
+          <div class="org">AsiaInfo</div>
+          <span class="role-tag">Member</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TSC MEMBERS -->
+<!-- TSC MODULE -->
 <section style="padding-top: 0;">
   <div class="container">
+    <div class="committee-intro">
+      <span class="kicker section-tag">/ Technical direction &amp; release oversight</span>
+      <h2 class="committee-title">Technical Steering<em>&nbsp;Committee.</em></h2>
+      <p class="committee-desc">The TSC oversees design and development activities, sets release and quality standards, mediates technical conflicts, and organizes inter-project collaboration across the OpenAN ecosystem. Decisions are reached by majority vote, with the TSC serving as the primary technical interface to the LFN TAC.</p>
+    </div>
+
     <div class="member-section">
       <div class="member-section-header">
         <h3>TSC Members</h3>
@@ -479,7 +579,7 @@
 
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">MB</div>
+            <img src="./src/images/tsc/Mohammed.png" alt="Mohammed">
           </div>
           <div class="name">Mohammed El Barhichi</div>
           <div class="org">Orange</div>
@@ -497,10 +597,10 @@
 
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">EP</div>
+           <img src="./src/images/tsc/EduardoPanciera.jpg" alt="Eduardo Panciera">
           </div>
-          <div class="name">Eduardo M Panciera Molanes</div>
-          <div class="org">Telecom Argentina</div>
+          <div class="name">Eduardo Panciera</div>
+          <div class="org">Personal</div>
           <span class="role-tag">Voting Member</span>
         </div>
 
@@ -532,8 +632,12 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- LF NETWORKING STAFF -->
+<!-- LF NETWORKING STAFF -->
+<section style="padding-top: 0;">
+  <div class="container">
     <div class="member-section">
       <div class="member-section-header">
         <h3>LF Networking Staff</h3>
@@ -543,7 +647,7 @@
       <div class="member-grid">
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">AJ</div>
+            <img src="./src/images/lfstaff/Arpit.avif" alt="Arpit Joshipura">
           </div>
           <div class="name">Arpit Joshipura</div>
           <div class="org">The Linux Foundation</div>
@@ -552,7 +656,7 @@
 
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">CC</div>
+            <img src="./src/images/lfstaff/Casey-Cain.avif" alt="Casey Cain">
           </div>
           <div class="name">Casey Cain</div>
           <div class="org">The Linux Foundation</div>
@@ -561,7 +665,7 @@
 
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">JL</div>
+            <img src="./src/images/lfstaff/jill.avif" alt="Jill Lovato">
           </div>
           <div class="name">Jill Lovato</div>
           <div class="org">The Linux Foundation</div>
@@ -570,12 +674,36 @@
 
         <div class="member-card">
           <div class="member-avatar">
-            <div class="initials">SS</div>
+            <img src="./src/images/lfstaff/Sunny-Schatz.avif" alt="Sunny Schatz">
           </div>
           <div class="name">Sunny Schatz</div>
           <div class="org">The Linux Foundation</div>
           <span class="role-tag">Marketing Communications Manager</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE INFO -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="gov-info-grid">
+      <div class="gov-info-card">
+        <h4>Project Roles</h4>
+        <p>TSC Chair and Co-Chair, TSC Voting Members, Adopter Advisory Committee (AAC) members, committers, maintainers, and contributors.</p>
+      </div>
+      <div class="gov-info-card">
+        <h4>How Roles Are Filled</h4>
+        <p>Defined in <code>GOVERNANCE.md</code> and <code>CONTRIBUTING.md</code>. Removal is by TSC vote.</p>
+      </div>
+      <div class="gov-info-card">
+        <h4>Dispute Resolution</h4>
+        <p>The TSC mediates technical conflicts, with decisions reached by majority vote. The TSC is the body to which the LFN TAC looks for interfaces.</p>
+      </div>
+      <div class="gov-info-card">
+        <h4>Charter Evolution</h4>
+        <p>Governance evolves through changes to the Charter, approved by the TSC.</p>
       </div>
     </div>
   </div>
