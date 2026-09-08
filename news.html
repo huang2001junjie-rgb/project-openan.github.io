@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>News - OpenAN</title>
+<meta name="description" content="Announcements, releases, and community updates from the OpenAN project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="src/images/openan-logo.png">
+<link rel="stylesheet" href="components/navbar.css">
+<link rel="stylesheet" href="components/news.css">
+<style>
+  :root {
+    --void: #06080f;
+    --bg: #0c1020;
+    --surface: #121830;
+    --surface-2: #1a2142;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.14);
+    --text: #eef3fb;
+    --text-muted: #8c97b3;
+    --text-dim: #5a648a;
+    --signal: #1aa8e2;
+    --signal-2: #4fc3f7;
+    --signal-bright: #29b6f6;
+    --deep: #1a2b8c;
+    --accent: #00bcd4;
+    --grid-line: rgba(26,168,226,0.04);
+
+    --display: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+  }
+  body::after {
+    content: "";
+    position: fixed; top: -20%; left: 50%;
+    width: 1200px; height: 800px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(26,168,226,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  section { padding: 100px 0; position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR COMPONENT — injected from components/navbar.html by components/navbar.js -->
+<div id="navbar" data-active="news">
+  <noscript>
+    <div class="container" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding-top:14px; padding-bottom:14px; font-size:0.9rem;">
+      <a href="index.html" style="font-weight:600;">OpenAN</a>
+      <a href="index.html#about">About</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="best-practices.html">Best Practices</a>
+      <a href="index.html#roadmap">Roadmap</a>
+      <a href="index.html#community">Community</a>
+      <a href="governance.html">Governance</a>
+      <a href="news.html">News</a>
+    </div>
+    <div style="padding: 60px 32px; max-width: 600px; margin: 0 auto; text-align: center; font-family: var(--sans);">
+      <h2 style="font-family: 'Geist', sans-serif; font-weight: 400; margin-bottom: 16px;">News requires JavaScript</h2>
+      <p style="color: var(--text-muted); line-height: 1.6;">Please enable JavaScript to browse news. Alternatively, find the latest announcements on the <a href="https://github.com/project-openan" style="color: var(--signal); text-decoration: underline;">OpenAN GitHub organization</a>.</p>
+    </div>
+  </noscript>
+</div>
+
+<!-- SIMPLIFIED DETAIL HEADER — shown instead of the navbar in detail view -->
+<header class="header" id="news-detail-header">
+  <div class="container header-inner">
+    <a class="logo" href="./index.html">
+      <div class="logo-mark">
+        <img src="./src/images/openan-logo.png" alt="OpenAN logo">
+      </div>
+      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
+    </a>
+    <a href="news.html" class="btn btn-ghost" id="detail-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to News
+    </a>
+  </div>
+</header>
+
+<!-- NEWS LIST -->
+<section class="news-list-wrap">
+  <div class="container">
+    <div id="news-list" class="news-list"></div>
+  </div>
+</section>
+
+<!-- NEWS DETAIL -->
+<section class="news-detail-wrap">
+  <div class="container">
+    <div id="news-detail"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="./index.html">
+          <div class="logo-mark">
+            <img src="./src/images/openan-logo.png" alt="OpenAN logo">
+          </div>
+          <div class="logo-text">
+            Open<b style="color: var(--signal); font-weight: 500;">AN</b>
+            <span>An LF Networking Candidate Project</span>
+          </div>
+        </a>
+        <p>An open, vendor-neutral framework for end-to-end closed-loop autonomous networks.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Project</h5>
+        <ul>
+          <li><a href="./index.html#about">Mission</a></li>
+          <li><a href="./architecture.html">Architecture</a></li>
+          <li><a href="./index.html#roadmap">Roadmap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Develop</h5>
+        <ul>
+          <li><a href="https://github.com/project-openan">GitHub</a></li>
+          <li><a href="https://github.com/project-openan/a2a-t-sdk-python">A2A-T SDK</a></li>
+          <li><a href="https://github.com/project-openan/registry-center">Registry Center</a></li>
+          <li><a href="https://github.com/project-openan/orchestration-center">Orchestration Center</a></li>
+          <li><a href="https://github.com/project-openan/docs">Documentation</a></li>
+          <li><a href="./index.html#get-involved">Get Involved</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Community</h5>
+        <ul>
+          <li><a href="https://linuxfoundation.zulipchat.com">Zulip</a></li>
+          <li><a href="https://lists.openan.dev">Mailing Lists</a></li>
+          <li><a href="./governance.html">Governance</a></li>
+          <li><a href="./index.html#community">Working Groups</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="https://lfnetworking.org">LF Networking</a></li>
+          <li><a href="https://lfnetworking.org/wp-content/uploads/sites/7/2022/04/LF-Networking-Fund-Charter-updated-2020-04-29.pdf">LFN Charter</a></li>
+          <li><a href="https://www.linuxfoundation.org/legal/trademark-usage">Trademark</a></li>
+          <li><a href="mailto:info@lfnetworking.org">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        &copy; OpenAN a Series of LF Projects, LLC. For web site terms of use, trademark policy and other project policies please see <a href="https://lfprojects.org" style="color: var(--text-muted);">lfprojects.org</a>.<br/>
+        &copy; 2026 THE LINUX FOUNDATION . ALL RIGHTS RESERVED . <a href="https://www.linuxfoundation.org/legal/privacy-policy" style="color: var(--text-muted);">PRIVACY</a> . <a href="https://www.linuxfoundation.org/legal/trademark-usage" style="color: var(--text-muted);">TRADEMARK</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://github.com/project-openan" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.59 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.13-4.55-5.05 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.5 9.5 0 0 1 12 7.36c.85.01 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.59.69.49C19.14 20.61 22 16.78 22 12.25 22 6.59 17.52 2 12 2z"/></svg></a>
+        <a href="https://linuxfoundation.zulipchat.com" aria-label="Zulip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v8h4v8h6"/><path d="M10 4v4h4v4h6"/></svg></a>
+        <a href="https://www.linkedin.com/company/lf-networking" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 17V10H6v7zM7.17 8.92a1.36 1.36 0 1 0 0-2.71 1.36 1.36 0 0 0 0 2.71zM18 17v-3.83c0-2.27-1.21-3.32-2.83-3.32a2.44 2.44 0 0 0-2.21 1.22V10h-2.34v7h2.34v-3.91c0-1.04.39-1.62 1.21-1.62.84 0 1.45.5 1.45 1.65V17z"/></svg></a>
+        <a href="https://www.youtube.com/@LFNetworking" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8zM10 15V9l5.2 3-5.2 3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="components/navbar.js"></script>
+<script src="components/news.js"></script>
+</body>
+</html>
