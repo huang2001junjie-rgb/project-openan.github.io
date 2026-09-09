@@ -93,32 +93,23 @@
   </noscript>
 </div>
 
-<!-- SIMPLIFIED DETAIL HEADER — shown instead of the navbar in detail view -->
-<header class="header" id="news-detail-header">
-  <div class="container header-inner">
-    <a class="logo" href="./index.html">
-      <div class="logo-mark">
-        <img src="./src/images/openan-logo.png" alt="OpenAN logo">
-      </div>
-      <div class="logo-text">Open<b style="color: var(--signal); font-weight: 500;">AN</b></div>
-    </a>
-    <a href="news.html" class="btn btn-ghost" id="detail-back">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Back to News
-    </a>
+<div class="page">
+  <div class="page-head">
+    <span class="kicker">/ News</span>
+    <h1>The latest <em>from OpenAN.</em></h1>
+    <p>Announcements, releases, and community updates from the OpenAN project.</p>
   </div>
-</header>
 
-<!-- NEWS LIST -->
-<section class="news-list-wrap">
-  <div class="container">
+  <!-- NEWS LIST -->
+  <div class="news-list-wrap">
     <div id="news-list" class="news-list"></div>
   </div>
-</section>
+</div>
 
 <!-- NEWS DETAIL -->
 <section class="news-detail-wrap">
   <div class="container">
+    <nav id="news-breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
     <div id="news-detail"></div>
   </div>
 </section>

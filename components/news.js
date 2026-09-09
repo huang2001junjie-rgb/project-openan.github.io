@@ -5,12 +5,12 @@
    detail view based on the ?id= query parameter. Browser
    back/forward is handled via popstate.
 
-   View switching:
+   View switching (see docs/adr/ADR-013):
    - List view: shows #navbar (injected by components/navbar.js)
-     and .news-list-wrap; hides the simplified detail header.
-   - Detail view: hides #navbar and .news-list-wrap; shows the
-     simplified #news-detail-header (logo + Back button top-right)
-     and .news-detail-wrap.
+     and the .page list view (page-head + news list); hides
+     .news-detail-wrap and the breadcrumb.
+   - Detail view: keeps #navbar, hides .page, shows
+     .news-detail-wrap and renders the #news-breadcrumb path.
 
    Requires fetch (use an HTTP server for local preview, e.g.
    `python -m http.server`). Depends on the containers/classes
@@ -21,11 +21,9 @@
 
   var listEl = document.getElementById('news-list');
   var detailEl = document.getElementById('news-detail');
-  var listWrap = document.querySelector('.news-list-wrap');
+  var listWrap = document.querySelector('.page');
   var detailWrap = document.querySelector('.news-detail-wrap');
-  var navbarEl = document.getElementById('navbar');
-  var detailHeaderEl = document.getElementById('news-detail-header');
-  var backBtn = document.getElementById('detail-back');
+  var breadcrumbEl = document.getElementById('news-breadcrumb');
   var newsData = [];
 
   function fmtDateISO(dateStr) { return dateStr; }
@@ -184,6 +182,23 @@
       body;
   }
 
+  function renderBreadcrumb(item) {
+    if (!breadcrumbEl) return;
+    breadcrumbEl.innerHTML =
+      '<a href="index.html">Home</a>' +
+      '<span class="breadcrumb-sep" aria-hidden="true">/</span>' +
+      '<a href="news.html">News</a>';
+    if (item && item.title) {
+      breadcrumbEl.innerHTML +=
+        '<span class="breadcrumb-sep" aria-hidden="true">/</span>' +
+        '<span class="breadcrumb-current" aria-current="page">' + escapeHtml(item.title) + '</span>';
+    }
+  }
+
+  function clearBreadcrumb() {
+    if (breadcrumbEl) breadcrumbEl.innerHTML = '';
+  }
+
   function getQueryId() {
     var s = window.location.search || '';
     var m = s.match(/[?&]id=([^&]+)/);
@@ -199,28 +214,18 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function navigateToList() {
-    if (window.history && window.history.pushState) {
-      window.history.pushState({ id: null }, '', 'news.html');
-    }
-    showList();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   function showDetail(id) {
     var item = newsData.find(function (x) { return x.id === id; });
     if (listWrap) listWrap.classList.add('hidden');
     if (detailWrap) detailWrap.classList.add('active');
-    if (navbarEl) navbarEl.classList.add('is-hidden');
-    if (detailHeaderEl) detailHeaderEl.classList.add('active');
     renderDetail(item || null);
+    renderBreadcrumb(item || null);
   }
 
   function showList() {
     if (detailWrap) detailWrap.classList.remove('active');
     if (listWrap) listWrap.classList.remove('hidden');
-    if (navbarEl) navbarEl.classList.remove('is-hidden');
-    if (detailHeaderEl) detailHeaderEl.classList.remove('active');
+    clearBreadcrumb();
   }
 
   function showLoading() {
@@ -240,13 +245,6 @@
           (err && err.message ? escapeHtml(err.message) : 'Unknown error') +
         '</p>' +
       '</div>';
-  }
-
-  if (backBtn) {
-    backBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      navigateToList();
-    });
   }
 
   window.addEventListener('popstate', function () {
