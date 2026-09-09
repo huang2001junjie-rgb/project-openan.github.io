@@ -167,6 +167,38 @@
 }
 .hamburger:hover { border-color: var(--signal); color: var(--signal); }
 
+/* ---------- BREADCRUMB ----------
+   Shown only on detail pages (News detail / Best Practices case pages),
+   below the navbar at the top-left. A single-row path of clickable
+   ancestor links separated by "/" (see ADR-013). */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 40px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+.breadcrumb a {
+  color: var(--text-muted);
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover { color: var(--signal); }
+.breadcrumb-sep {
+  color: var(--text-dim);
+  opacity: 0.6;
+  user-select: none;
+  pointer-events: none;
+}
+.breadcrumb-current {
+  color: var(--text-muted);
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
   .nav { display: none; }
