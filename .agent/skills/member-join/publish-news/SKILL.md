@@ -1,5 +1,5 @@
 ---
-name: openan-member-join-news
+name: member-join-publish-news
 description: Generate or refresh "organization joins OpenAN" news pages for the project-openan.github.io website with the unified structure — title area (Announcement + Ecosystem + org tags), dual-logo cover image directly under the title, announcement lede, "About <Org>" intro, and "What This Means for OpenAN" impact section — plus synced news.html list card, DCO sign-off commit and local preview. Use when the user announces a new organization/participant joining OpenAN, asks to refresh or unify existing join news, or wants marketing-style ecosystem announcements.
 ---
 
